@@ -148,11 +148,11 @@ function WeatherPanel({ weather }: { weather: Weather | null }) {
         {weather.daily.time.map((t, i) => (
           <div key={t} className="flex flex-col items-center text-xs">
             <div className="flex h-24 w-full items-end rounded bg-muted">
-              <div className="w-full rounded bg-primary" style={{ height: `${(weather.daily.precipitation_sum[i] / max) * 100}%` }} />
+              <div className="w-full rounded bg-primary" style={{ height: `${((weather.daily.precipitation_sum[i] ?? 0) / max) * 100}%` }} />
             </div>
             <p className="mt-1 font-semibold">{new Date(t).toLocaleDateString(undefined, { weekday: "short" })}</p>
             <p className="text-muted-foreground">{weather.daily.precipitation_sum[i]}mm · {weather.daily.precipitation_probability_max[i]}%</p>
-            <p>{Math.round(weather.daily.temperature_2m_max[i])}°/{Math.round(weather.daily.temperature_2m_min[i])}°</p>
+            <p>{Math.round(weather.daily.temperature_2m_max[i] ?? 0)}°/{Math.round(weather.daily.temperature_2m_min[i] ?? 0)}°</p>
           </div>
         ))}
       </div>
@@ -160,7 +160,7 @@ function WeatherPanel({ weather }: { weather: Weather | null }) {
   );
 }
 
-const blank = (): Crop => ({ id: crypto.randomUUID(), name: "", variety: "", stage: STAGES[0], plantedOn: "", area: 0, expectedYield: 0, targetMarket: "", price: 0, notes: "" });
+const blank = (): Crop => ({ id: crypto.randomUUID(), name: "", variety: "", stage: STAGES[0]!, plantedOn: "", area: 0, expectedYield: 0, targetMarket: "", price: 0, notes: "" });
 
 function CropsPanel({ crops, setCrops }: { crops: Crop[]; setCrops: (c: Crop[]) => void }) {
   const [form, setForm] = useState<Crop | null>(null);

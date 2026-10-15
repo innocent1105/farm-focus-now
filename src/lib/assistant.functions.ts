@@ -5,7 +5,7 @@ type Msg = { role: "user" | "model"; text: string };
 export const askAssistant = createServerFn({ method: "POST" })
   .inputValidator((d: { messages: Msg[]; context: string }) => d)
   .handler(async ({ data }) => {
-    const key = process.env.GOOGLE_API_KEY;
+    const key = process.env["GOOGLE_API_KEY"];
     if (!key) return { error: "The assistant isn't configured yet." };
     const res = await fetch(
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",

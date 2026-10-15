@@ -1,5 +1,5 @@
 // Prototype storage: localStorage for the farm profile, IndexedDB for crop records.
-export type Farm = { name: string; owner: string; hectares: number; lat?: number; lon?: number; locationName: string };
+export type Farm = { name: string; owner: string; hectares: number; lat?: number | undefined; lon?: number | undefined; locationName: string };
 export type Crop = {
   id: string; name: string; variety: string; stage: string; plantedOn: string; area: number;
   expectedYield: number; targetMarket: string; price: number; notes: string;
