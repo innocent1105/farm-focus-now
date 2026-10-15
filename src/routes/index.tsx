@@ -8,9 +8,9 @@ import { askAssistant } from "@/lib/assistant.functions";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Shamba — Farm & Crop Manager" },
+      { title: "AgriGuard AI — Farm & Crop Manager" },
       { name: "description", content: "Track your farm location, live weather, crops, stages and markets, with an AI agronomy assistant." },
-      { property: "og:title", content: "Shamba — Farm & Crop Manager" },
+      { property: "og:title", content: "AgriGuard AI — Farm & Crop Manager" },
       { property: "og:description", content: "Farm location, live weather, crop records and an AI assistant in one place." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -61,7 +61,7 @@ function Index() {
       <header className="bg-soil text-soil-foreground">
         <div className="mx-auto flex max-w-7xl items-end justify-between gap-4 px-6 py-8">
           <div>
-            <p className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] opacity-70"><Leaf className="h-4 w-4" /> Shamba</p>
+            <p className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] opacity-70"><Leaf className="h-4 w-4" /> AgriGuard AI</p>
             <h1 className="mt-2 text-4xl font-bold">{farm.name || "Your farm"}</h1>
             <p className="mt-1 text-sm opacity-75">{farm.owner && `${farm.owner} · `}{farm.hectares || 0} ha · {crops.length} crop{crops.length === 1 ? "" : "s"}</p>
           </div>
